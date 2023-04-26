@@ -6,4 +6,8 @@ Work-In-Progress (but aren't we all)
 
 ### To-Do
 - Write a better README.md
-- Include more To-Dos
+- ~~Include more To-Dos~~
+- Convert to PSModule
+- Implement configuration file
+  - Location of JSON
+- Add $PSStyle?
