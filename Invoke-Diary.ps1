@@ -1,3 +1,21 @@
+function Read-String {
+    param(
+        $maxLength = 65536,
+        $Prompt
+    )
+    $str = ""
+    Write-Host -NoNewline ($Prompt + ": ")
+    $inputStream = [System.Console]::OpenStandardInput($maxLength);
+    $bytes = [byte[]]::new($maxLength);
+    while ($true) {
+        $len = $inputStream.Read($bytes, 0, $maxLength);
+        $str += [string]::new($bytes, 0, $len)
+        if ($str.EndsWith("`r`n")) {
+            $str = $str.Substring(0, $str.Length - 2)
+            return $str
+        }
+    }
+} # Read-String [kganjam - https://github.com/PowerShell/PowerShell/issues/16555]
 function New-ProgressItem {
     param (
         $DateOfProgress = ( Get-Date -Format "MM-dd-yyyy" ),
@@ -30,7 +48,7 @@ function Get-JSONPath {
 function New-DiaryEntry {
     $entry = [pscustomobject]@{
         ShortDesc = Read-Host -Prompt "Short Description"
-        Content   = Read-Host -Prompt "Content"
+        Content   = Read-String -Prompt "Content"
     }
     New-ProgressItem -Title ("DIARY") -ShortDesc ($entry.ShortDesc) -Desc ($entry.Content)
 } # New-DiaryEntry
