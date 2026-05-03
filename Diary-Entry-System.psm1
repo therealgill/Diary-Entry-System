@@ -18,4 +18,11 @@ foreach ($path in @($privatePath, $publicPath)) {
         }
 }
 
-Invoke-Diary
+Export-ModuleMember -Function @(
+    'Get-Diary',
+    'Invoke-Diary',
+    'New-Diary',
+    'New-DiaryEntry',
+    'Get-DiaryEntry',
+    'Set-DiaryConfiguration'
+)
