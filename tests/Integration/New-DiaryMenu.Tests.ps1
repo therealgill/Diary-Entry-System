@@ -4,6 +4,7 @@ Describe 'New-DiaryMenu' {
     BeforeAll {
         Import-Module $global:ManifestPath -Force
         function Initialize-DiaryConfiguration {}
+        . (Join-Path -Path $global:RepoRoot -ChildPath 'Private/Read-Confirmation.ps1')
         . (Join-Path -Path $global:RepoRoot -ChildPath 'Private/New-DiaryMenu.ps1')
         $Script:version = '1.0.0'
         $Script:CurrentDiary = 'TestDiary'

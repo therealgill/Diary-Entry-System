@@ -1,0 +1,12 @@
+{
+  "universe_usage_history": [
+    { "universe": "Tron", "assigned_at": "2026-09-13" }
+  ],
+  "assignment_cast_snapshots": {
+    "assignment-2026-09-13-001": {
+      "universe": "Tron",
+      "created_at": "2026-09-13",
+      "members": ["flynn", "yori", "tron", "bit", "dumont"]
+    }
+  }
+}

@@ -28,4 +28,46 @@ Write-Output 'done'
         $result.ExitCode | Should -Be 0
         $result.StdOut | Should -Match 'done'
     }
+
+    It 'Read-Confirmation returns true for default y/yes pattern' {
+        $readConfirmationPath = Join-Path -Path $global:RepoRoot -ChildPath 'Private/Read-Confirmation.ps1'
+        $code = @"
+. '$readConfirmationPath'
+`$result = Read-Confirmation -Prompt 'Confirm'
+Write-Output `$result
+"@
+
+        $result = Invoke-ExternalPwsh -Code $code -StdIn "yes`n"
+
+        $result.ExitCode | Should -Be 0
+        $result.StdOut | Should -Match 'True'
+    }
+
+    It 'Read-Confirmation returns false when response does not match' {
+        $readConfirmationPath = Join-Path -Path $global:RepoRoot -ChildPath 'Private/Read-Confirmation.ps1'
+        $code = @"
+. '$readConfirmationPath'
+`$result = Read-Confirmation -Prompt 'Confirm'
+Write-Output `$result
+"@
+
+        $result = Invoke-ExternalPwsh -Code $code -StdIn "n`n"
+
+        $result.ExitCode | Should -Be 0
+        $result.StdOut | Should -Match 'False'
+    }
+
+    It 'Read-Confirmation matches a custom AcceptPattern' {
+        $readConfirmationPath = Join-Path -Path $global:RepoRoot -ChildPath 'Private/Read-Confirmation.ps1'
+        $code = @"
+. '$readConfirmationPath'
+`$result = Read-Confirmation -Prompt 'Scope' -AcceptPattern '^(?i)a(ll)?`$'
+Write-Output `$result
+"@
+
+        $result = Invoke-ExternalPwsh -Code $code -StdIn "all`n"
+
+        $result.ExitCode | Should -Be 0
+        $result.StdOut | Should -Match 'True'
+    }
 }

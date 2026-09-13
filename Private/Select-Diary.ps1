@@ -35,8 +35,7 @@ function Select-Diary {
         return $true
     }
 
-    $makeDefault = Read-Host -Prompt 'Set this diary as default? (y/N)'
-    if ($makeDefault -match '^(?i)y(es)?$') {
+    if (Read-Confirmation -Prompt 'Set this diary as default? (y/N)') {
         Set-DefaultDiary -DiaryName $inputName
     }
 

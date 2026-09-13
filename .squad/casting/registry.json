@@ -1,0 +1,44 @@
+{
+  "agents": {
+    "flynn": {
+      "persistent_name": "Flynn",
+      "role": "Lead",
+      "universe": "Tron",
+      "created_at": "2026-09-13",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "yori": {
+      "persistent_name": "Yori",
+      "role": "TUI",
+      "universe": "Tron",
+      "created_at": "2026-09-13",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "tron": {
+      "persistent_name": "Tron",
+      "role": "Backend",
+      "universe": "Tron",
+      "created_at": "2026-09-13",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "bit": {
+      "persistent_name": "Bit",
+      "role": "Tester",
+      "universe": "Tron",
+      "created_at": "2026-09-13",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "dumont": {
+      "persistent_name": "Dumont",
+      "role": "Docs",
+      "universe": "Tron",
+      "created_at": "2026-09-13",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}

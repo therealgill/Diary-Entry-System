@@ -48,8 +48,8 @@ function New-DiaryMenu {
                 }
             }
 
-            $scopeText = Read-Host -Prompt 'Scope: Current diary or All diaries? (C/A)'
-            if ($scopeText -match '^(?i)a(ll)?$') {
+            $useAllDiaries = Read-Confirmation -Prompt 'Scope: Current diary or All diaries? (C/A)' -AcceptPattern '^(?i)a(ll)?$'
+            if ($useAllDiaries) {
                 Get-DiaryEntry -NumberOfEntries $count -AllDiaries
             } else {
                 Get-DiaryEntry -NumberOfEntries $count
