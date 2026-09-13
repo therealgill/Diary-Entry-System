@@ -6,7 +6,7 @@ function Select-Diary {
 
     Initialize-DiaryConfiguration
 
-    $diaryFiles = Get-DiaryFiles
+    $diaryFiles = @(Get-DiaryFiles)
     if ($diaryFiles.Count -gt 0) {
         Write-Host 'Available diaries:'
         $index = 1

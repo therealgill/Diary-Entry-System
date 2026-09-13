@@ -47,7 +47,7 @@ Describe 'New-DiaryMenu' {
         $result = New-DiaryMenu
 
         $result | Should -BeTrue
-        Assert-MockCalled Get-DiaryEntry -Times 1 -Exactly -ParameterFilter {
+        Should -Invoke Get-DiaryEntry -Times 1 -Exactly -ParameterFilter {
             $NumberOfEntries -eq 3
         }
     }

@@ -73,7 +73,8 @@ function Initialize-DiaryConfiguration {
         Save-DiaryConfiguration -Configuration $configuration -ConfigurationPath $configurationPath
     }
 
-    if ([string]::IsNullOrWhiteSpace($configuration.DiariesDirectory)) {
+    $diariesDirectoryProperty = $configuration.PSObject.Properties['DiariesDirectory']
+    if (-not $diariesDirectoryProperty -or [string]::IsNullOrWhiteSpace($diariesDirectoryProperty.Value)) {
         throw 'Configuration is missing DiariesDirectory.'
     }
 

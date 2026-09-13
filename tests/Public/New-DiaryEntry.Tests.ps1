@@ -23,7 +23,7 @@ Describe 'New-DiaryEntry' {
 
             New-DiaryEntry
 
-            Assert-MockCalled New-ProgressItem -Times 1 -Exactly -ParameterFilter {
+            Should -Invoke New-ProgressItem -Times 1 -Exactly -ParameterFilter {
                 $Title -eq 'DIARY' -and
                 $ShortDesc -eq 'A short description' -and
                 $Desc -eq 'Detailed entry content'

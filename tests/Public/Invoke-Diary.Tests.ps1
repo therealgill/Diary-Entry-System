@@ -23,7 +23,7 @@ Describe 'Invoke-Diary' {
 
             Invoke-Diary
 
-            Assert-MockCalled New-DiaryMenu -Times 2 -Exactly
+            Should -Invoke New-DiaryMenu -Times 2 -Exactly
         }
     }
 }

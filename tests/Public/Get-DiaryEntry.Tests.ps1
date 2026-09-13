@@ -20,8 +20,8 @@ Describe 'Get-DiaryEntry' {
 
                 Get-DiaryEntry -NumberOfEntries 3
 
-                Assert-MockCalled Write-Host -Times 1 -ParameterFilter { $Object -eq 'No diary entries found.' }
-                Assert-MockCalled Wait-ForAnyKey -Times 1
+                Should -Invoke Write-Host -Times 1 -ParameterFilter { $Object -eq 'No diary entries found.' }
+                Should -Invoke Wait-ForAnyKey -Times 1
             } finally {
                 Remove-Item -Path $tempFile -Force -ErrorAction SilentlyContinue
             }

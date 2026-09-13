@@ -41,7 +41,7 @@ Describe 'New-Diary' {
 
                 $null = New-Diary -Name 'Personal2' -SetAsDefault
 
-                Assert-MockCalled Set-DefaultDiary -Times 1 -Exactly -ParameterFilter { $DiaryName -eq 'Personal2' }
+                Should -Invoke Set-DefaultDiary -Times 1 -Exactly -ParameterFilter { $DiaryName -eq 'Personal2' }
             } finally {
                 Remove-Item -Path $tempDir -Recurse -Force -ErrorAction SilentlyContinue
             }
